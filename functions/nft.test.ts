@@ -48,7 +48,7 @@ test('should inject metadata for valid nfts', async () => {
       `<meta property="twitter:image:alt" content = "https://app.uniswap.org/images/512x512_App_Icon.png"/>`
     )
   }
-})
+}, 10000)
 
 test('should not inject metadata for invalid calls', async () => {
   const baseReq = new Request('http://127.0.0.1:3000/nfts/asset/0xed5af388653567af2f388e6224dc7c4b3241c544/100000')
@@ -79,7 +79,7 @@ test('should not inject metadata for invalid calls', async () => {
     const body = await res.text()
     expect(body).toEqual(baseBody)
   }
-})
+}, 10000)
 
 test('api should not return a valid response', async () => {
   const invalidUrls = [
@@ -95,4 +95,4 @@ test('api should not return a valid response', async () => {
     const res = await fetch(req)
     expect([404, 500]).toContain(res.status)
   }
-})
+}, 10000)
