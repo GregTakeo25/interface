@@ -7,7 +7,7 @@ import getSetup from '../../../../utils/getSetup'
 
 export async function onRequestGet({ params, request }) {
   try {
-    const { fontData, watermark } = await getSetup(request)
+    const { baselMediumFontData, watermark } = await getSetup(request)
 
     const { index } = params
     const collectionAddress = String(index[0])
@@ -49,9 +49,8 @@ export async function onRequestGet({ params, request }) {
         height: 630,
         fonts: [
           {
-            name: 'Inter',
-            data: fontData,
-            style: 'normal',
+            name: 'Basel Medium',
+            data: baselMediumFontData,
           },
         ],
       }

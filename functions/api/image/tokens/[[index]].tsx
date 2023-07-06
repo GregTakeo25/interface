@@ -9,7 +9,7 @@ import getToken from '../../../utils/getToken'
 
 export async function onRequestGet({ params, request }) {
   try {
-    const { fontData, watermark } = await getSetup(request)
+    const { baselBookFontData, baselMediumFontData, watermark } = await getSetup(request)
 
     const { index } = params
     const networkName = String(index[0]).toUpperCase()
@@ -79,11 +79,9 @@ export async function onRequestGet({ params, request }) {
               </img>
               <div
                 style={{
-                  fontFamily: 'Inter',
+                  fontFamily: 'Basel Medium',
                   fontSize: '72px',
-                  lineHeight: '58px',
-                  marginLeft: '-5px',
-                  marginTop: '24px',
+                  marginTop: '48px',
                 }}
               >
                 {name}
@@ -99,10 +97,10 @@ export async function onRequestGet({ params, request }) {
               >
                 <div
                   style={{
-                    fontFamily: 'Inter',
+                    fontFamily: 'Basel Book',
                     fontSize: '168px',
-                    lineHeight: '133px',
-                    marginLeft: '-13px',
+                    marginLeft: '-8px',
+                    lineHeight: '168px',
                   }}
                 >
                   {data.symbol}
@@ -124,9 +122,12 @@ export async function onRequestGet({ params, request }) {
         height: 630,
         fonts: [
           {
-            name: 'Inter',
-            data: fontData,
-            style: 'normal',
+            name: 'Basel Book',
+            data: baselBookFontData,
+          },
+          {
+            name: 'Basel Medium',
+            data: baselMediumFontData,
           },
         ],
       }

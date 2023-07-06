@@ -8,7 +8,7 @@ import getSetup from '../../../../utils/getSetup'
 
 export async function onRequestGet({ params, request }) {
   try {
-    const { fontData, watermark, check } = await getSetup(request)
+    const { baselMediumFontData, watermark, check } = await getSetup(request)
 
     const { index } = params
     const collectionAddress = String(index)
@@ -69,18 +69,21 @@ export async function onRequestGet({ params, request }) {
                   style={{
                     gap: '12px',
                     fontSize: '72px',
-                    fontFamily: 'Inter',
+                    fontFamily: 'Basel Medium',
                     color: 'white',
                     display: 'flex',
                     flexDirection: 'row',
-                    alignItems: 'center',
+                    alignItems: 'flex-end',
                     flexWrap: 'wrap',
+                    lineHeight: '64px'
                   }}
                 >
                   {words.map((word) => (
                     <text key={word}>{word}</text>
                   ))}
-                  {data.isVerified && <img src={check} height="54px" />}
+                  {data.isVerified && <img src={check} height="54px" style = {{
+                    marginBottom: '-2px',
+                  }}/>}
                 </div>
                 <img
                   src={watermark}
@@ -99,9 +102,8 @@ export async function onRequestGet({ params, request }) {
         height: 630,
         fonts: [
           {
-            name: 'Inter',
-            data: fontData,
-            style: 'normal',
+            name: 'Basel Medium',
+            data: baselMediumFontData,
           },
         ],
       }
